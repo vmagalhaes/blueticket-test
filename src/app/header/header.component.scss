@@ -1,0 +1,33 @@
+.header-container {
+  height: 60px;
+
+  .company-container {
+    img {
+      height: 45px;
+      width: auto;
+      top: 5px;
+      left: 20px;
+    }
+  }
+
+  .tools-container {
+    i {
+      color: white;
+      line-height: 60px;
+    }
+  }
+
+  .profile-container {
+    img {
+      width: 35px;
+      height: 35px;
+      border: 2px solid white;
+      border-radius: 20px;
+    }
+
+    i {
+      color: white;
+      line-height: 60px;
+    }
+  }
+}
