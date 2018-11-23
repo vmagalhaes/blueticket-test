@@ -21,7 +21,6 @@ import { ProfileComponent } from './profile/profile.component';
     CoreModule,
     PanelModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

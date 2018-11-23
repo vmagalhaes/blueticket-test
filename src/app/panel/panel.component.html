@@ -1,2 +1,27 @@
 <div class="panel-container">
+  <fieldset>
+    <legend>Moedas</legend>
+    <div [class.border-green]="currency.variation > 0" [class.border-red]="currency.variation < 0" class="currency mb-10 mt-10" *ngFor="let currency of currencies">
+      <div class="w-10 display-inline-block pl-20 pt-15">
+        <span class="display-block">{{ currency.key || '-' }}</span>
+        <span class="label display-block">Moeda</span>
+      </div>
+      <div class="w-20 display-inline-block pt-15">
+        <span class="display-block">{{ currency.name || '-' }}</span>
+        <span class="label display-block">Nome</span>
+      </div>
+      <div class="w-20 display-inline-block pt-15">
+        <span class="display-block">R${{ currency.buy || ' -' | convertCoin }}</span>
+        <span class="label display-block">Compra</span>
+      </div>
+      <div class="w-20 display-inline-block pt-15">
+        <span class="display-block">R${{ currency.sell || ' -' | convertCoin }}</span>
+        <span class="label display-block">Venda</span>
+      </div>
+      <div class="w-20 display-inline-block pt-15">
+        <span [class.color-green]="currency.variation > 0" [class.color-red]="currency.variation < 0" class="display-block">{{ currency.variation || '-' }}%</span>
+        <span class="label display-block">Variação</span>
+      </div>
+    </div>
+  </fieldset>
 </div>

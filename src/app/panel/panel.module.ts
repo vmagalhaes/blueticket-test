@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { PanelComponent } from './panel.component';
+
+import { SharedModule } from '../shared/shared.module';
 
 import { PanelService } from './panel.service';
 
@@ -8,7 +11,10 @@ import { PanelService } from './panel.service';
   declarations: [
     PanelComponent
   ],
-  imports: [],
+  imports: [
+    CommonModule,
+    SharedModule
+  ],
   providers: [
     PanelService
   ],
