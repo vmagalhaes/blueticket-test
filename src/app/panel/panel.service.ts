@@ -43,7 +43,7 @@ export class PanelService extends RestClientService {
   }
 
   private collectionPath(service): string {
-    return `${this.apiPath}/${service}/?format=json&key=e4a91234`;
+    return `https://api.hgbrasil.com/finance/${service}/?format=json&key=e4a91234`;
   }
 
 }
