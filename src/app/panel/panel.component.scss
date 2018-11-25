@@ -7,12 +7,28 @@
 
     legend {
       color: #55555f;
+      display: block;
+      width: auto;
+      padding: 0 5px;
+      margin-bottom: 0;
+      font-size: inherit;
+      line-height: inherit;
+      border-bottom: none;
     }
   }
 
-  .currency {
+  table {
+    border-collapse:separate; 
+    border-spacing: 0 1em;
+  }
+
+  #taxes:hover {
+    cursor: default !important;
+  }
+
+  .values {
     width: 100%;
-    height: 60px;
+    height: auto;
     color: white;
     line-height: 17px;
     background-color: #474854;
@@ -21,6 +37,15 @@
     .label {
       color: #313241;
     }
+
+    &:hover {
+      cursor: pointer;
+      background-color: #363848;
+
+      .label {
+        color: #9c9c9c;
+      }
+    }
   }
 
   .border-green {
@@ -28,7 +53,7 @@
   }
 
   .border-red {
-    box-shadow: -5px 0px 0px 0px #ca2424;
+    box-shadow: -5px 0px 0px 0px #F73235;
   }
 
   .color-green {
@@ -36,6 +61,48 @@
   }
 
   .color-red {
-    color: #ca2424;
+    color: #F73235;
   }
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  animation-name: animateopacity;
+  animation-duration: 0.4s
+}
+
+@keyframes animateopacity {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

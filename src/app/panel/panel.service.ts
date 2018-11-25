@@ -5,7 +5,8 @@ import * as _ from 'lodash';
 import * as $ from 'jquery';
 
 import { RestClientService } from '../core/services';
-import { Quotations } from './quotations';
+import { Quotation } from './quotations';
+import { Tax } from 'src/app/panel/taxes';
 
 @Injectable()
 export class PanelService extends RestClientService {
@@ -15,8 +16,8 @@ export class PanelService extends RestClientService {
     super();
   }
 
-  getQuotations(): Observable<Quotations> {
-    return Observable.create((observer: Observer<Quotations>) => {
+  getQuotations(): Observable<Quotation> {
+    return Observable.create((observer: Observer<Quotation>) => {
       $.ajax(this.collectionPath('quotations'), {
         type: 'GET',
         headers: {
@@ -30,22 +31,22 @@ export class PanelService extends RestClientService {
     });
   }
 
-  getTaxes(): Observable<any[]> {
-    return Observable.create((observer: Observer<any>) => {
+  getTaxes(): Observable<Tax> {
+    return Observable.create((observer: Observer<Tax>) => {
       $.ajax(this.collectionPath('taxes'), {
         type: 'GET',
         headers: {
           'Accept': 'application/json'
         }
       }).then((response: any) => {
-        observer.next(response.results);
+        observer.next(response.results[0]);
       }, (jqXHR: any) => {
         observer.error(jqXHR.responseText);
       });
     });
   }
 
-  private unmarshalQuotations(quotations): Quotations {
+  private unmarshalQuotations(quotations): Quotation {
     return {
       bitcoin: [
         _.assign(quotations.bitcoin.bitstamp,        { key: 'bitstamp'}),
@@ -63,10 +64,10 @@ export class PanelService extends RestClientService {
         _.assign(quotations.currencies.USD, { key: 'USD'})
       ],
       stocks: [
-        _.assign(quotations.currencies.CAC,      { key: 'CAC'}),
-        _.assign(quotations.currencies.IBOVESPA, { key: 'IBOVESPA'}),
-        _.assign(quotations.currencies.NASDAQ,   { key: 'NASDAQ'}),
-        _.assign(quotations.currencies.NIKKEI,   { key: 'NIKKEI'})
+        _.assign(quotations.stocks.CAC,      { key: 'CAC'}),
+        _.assign(quotations.stocks.IBOVESPA, { key: 'IBOVESPA'}),
+        _.assign(quotations.stocks.NASDAQ,   { key: 'NASDAQ'}),
+        _.assign(quotations.stocks.NIKKEI,   { key: 'NIKKEI'})
       ]
     };
   }

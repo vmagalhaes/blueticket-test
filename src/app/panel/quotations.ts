@@ -20,32 +20,7 @@ export interface Stock extends Monetary {
   location: string;
 }
 
-
-// export interface CurrencyObject {
-//   ARS: Currency;
-//   BTC: Currency;
-//   EUR: Currency;
-//   GBP: Currency;
-//   USD: Currency;
-// }
-
-// export interface BitcoinObject {
-//   bitstamp: Bitcoin;
-//   blockchain_info: Bitcoin;
-//   coinbase: Bitcoin;
-//   foxbit: Bitcoin;
-//   mercadobitcoin: Bitcoin;
-//   omnitrade: Bitcoin;
-// }
-
-// export interface StockObject {
-//   CAC: Stock;
-//   IBOVESPA: Stock;
-//   NASDAQ: Stock;
-//   NIKKEI: Stock;
-// }
-
-export interface Quotations {
+export interface Quotation {
   currencies: Currency[];
   bitcoin: Bitcoin[];
   stocks: Stock[];

@@ -1,3 +1,6 @@
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/bootstrap-grid';
+
 body {
   margin: 0 auto;
   font-family: 'Hammersmith One', sans-serif;
@@ -32,6 +35,10 @@ body {
 }
 
 /* Percentage */
+
+.w-5 {
+  width: 5%;
+}
 
 .w-10 {
   width: 10%;
@@ -666,6 +673,8 @@ body {
 
 .display-inline-block {
   display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
 }
 
 [hidden] {

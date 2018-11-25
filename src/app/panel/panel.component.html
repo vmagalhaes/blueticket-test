@@ -1,27 +1,130 @@
 <div class="panel-container">
-  <fieldset>
-    <legend>Moedas</legend>
-    <div [class.border-green]="currency.variation > 0" [class.border-red]="currency.variation < 0" class="currency mb-10 mt-10" *ngFor="let currency of currencies">
-      <div class="w-10 display-inline-block pl-20 pt-15">
-        <span class="display-block">{{ currency.key || '-' }}</span>
-        <span class="label display-block">Moeda</span>
-      </div>
-      <div class="w-20 display-inline-block pt-15">
-        <span class="display-block">{{ currency.name || '-' }}</span>
-        <span class="label display-block">Nome</span>
-      </div>
-      <div class="w-20 display-inline-block pt-15">
-        <span class="display-block">R${{ currency.buy || ' -' | convertCoin }}</span>
-        <span class="label display-block">Compra</span>
-      </div>
-      <div class="w-20 display-inline-block pt-15">
-        <span class="display-block">R${{ currency.sell || ' -' | convertCoin }}</span>
-        <span class="label display-block">Venda</span>
-      </div>
-      <div class="w-20 display-inline-block pt-15">
-        <span [class.color-green]="currency.variation > 0" [class.color-red]="currency.variation < 0" class="display-block">{{ currency.variation || '-' }}%</span>
-        <span class="label display-block">Variação</span>
-      </div>
+  <div class="container-fluid">
+    <fieldset>
+      <legend>Moedas</legend>
+      <table class="w-100">
+        <tr (click)="onRowClick(currency.key, 'currencies', currency.name)" [class.border-green]="currency.variation > 0" [class.border-red]="currency.variation < 0" class="values pb-10 mt-10" *ngFor="let currency of currencies">
+          <td>
+            <div class="row p-10">
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ currency.key || '-' }}</span>
+                <span class="label display-block">Moeda</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ currency.name || '-' }}</span>
+                <span class="label display-block">Nome</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">R${{ currency.buy || ' -' | convertCoin }}</span>
+                <span class="label display-block">Compra</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">R${{ currency.sell || ' -' | convertCoin }}</span>
+                <span class="label display-block">Venda</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span [class.color-green]="currency.variation > 0" [class.color-red]="currency.variation < 0" class="display-block">{{ currency.variation || '-' }}%</span>
+                <span class="label display-block">Variação</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+    <fieldset class="mt-20">
+      <legend>Bitcoin</legend>
+      <table class="w-100">
+        <tr (click)="onRowClick(coin.key, 'bitcoin', bitcoin.name)" [hidden]="coin.variation === 0" [class.border-green]="coin.variation > 0" [class.border-red]="coin.variation < 0" class="values pb-10 mt-10" *ngFor="let coin of bitcoin">
+          <td>
+            <div class="row p-10">
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ coin.name || '-' }}</span>
+                <span class="label display-block">Nome</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">R${{ coin.buy || ' -' | convertCoin }}</span>
+                <span class="label display-block">Compra</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">R${{ coin.last || ' -' | convertCoin }}</span>
+                <span class="label display-block">Última cotação</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">R${{ coin.sell || ' -' | convertCoin }}</span>
+                <span class="label display-block">Venda</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span [class.color-green]="coin.variation > 0" [class.color-red]="coin.variation < 0" class="display-block">{{ coin.variation || '-' }}%</span>
+                <span class="label display-block">Variação</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+    <fieldset class="mt-20">
+      <legend>Bolsas de valores</legend>
+      <table class="w-100">
+        <tr (click)="onRowClick(stock.key, 'stocks', stock.name)" [hidden]="stock.variation === 0" [class.border-green]="stock.variation > 0" [class.border-red]="stock.variation < 0" class="values pb-10 mt-10" *ngFor="let stock of stocks">
+          <td>
+            <div class="row p-10">
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ stock.key || '-' }}</span>
+                <span class="label display-block">Bolsa</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ stock.name || '-' }}</span>
+                <span class="label display-block">Nome</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ stock.location || '-' }}</span>
+                <span class="label display-block">Localização</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span [class.color-green]="stock.variation > 0" [class.color-red]="stock.variation < 0" class="display-block">{{ stock.variation || '-' }}%</span>
+                <span class="label display-block">Variação</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+    <fieldset class="mt-20">
+      <legend>Taxas</legend>
+      <table class="w-100">
+        <tr id="taxes" class="values pb-10 mt-10">
+          <td>
+            <div class="row p-10">
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ taxes?.cdi || '- ' }}%</span>
+                <span class="label display-block">CDI</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ taxes?.selic || '- ' }}%</span>
+                <span class="label display-block">SELIC</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ taxes?.dailyFactor || '-' }}</span>
+                <span class="label display-block">Fator diário</span>
+              </div>
+              <div class="col pt-5 pb-5">
+                <span class="display-block">{{ taxes?.date || '-' }}</span>
+                <span class="label display-block">Data de referência</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+  </div>
+</div>
+
+<div id="graphic" class="modal">
+  <div class="modal-content">
+    <div class="display-inline-block w-100">
+      <span>{{ chartTitle }}</span>
+      <span (click)="modal.style.display='none'" class="close">&times;</span>
     </div>
-  </fieldset>
+    <canvas id="canvas">{{ chart }}</canvas>
+  </div>
 </div>
