@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div *ngIf="!registering" class="row">
+    <div class="col">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div>
+          <label for="login">Login</label>
+          <div class="col">
+            <input [class.input-error]="submitted && form.login.errors" type="text" formControlName="login" />
+            <div *ngIf="submitted && form.login.errors" class="help-block">
+              <div *ngIf="form.login.errors.required">Login é um campo necessário</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10">
+          <label for="password">Senha</label>
+          <div class="col">
+            <input [class.input-error]="submitted && form.login.errors" type="password" formControlName="password"/>
+            <div *ngIf="submitted && form.password.errors" class="help-block">
+              <div *ngIf="form.password.errors.required">Senha é um campo necessário.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col mt-20 text-right">
+          <button type="submit">Login</button><br/>
+          <span (click)="isRegistering()">Registrar-se</span><br/>
+          <span *ngIf="message" class="text-center help-block">{{message}}</span>
+          <p *ngIf="registredUser" class="text-center mt-10 registred-user">Usuário cadastrado! Faça o login.</p>          
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="registering" class="row">
+    <div class="col">
+      <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <div>
+          <label for="login">Login</label>
+          <div class="col">
+            <input [class.input-error]="submitted && form.login.errors" type="text" formControlName="login" />
+            <div *ngIf="submitted && form.login.errors" class="help-block">
+              <div *ngIf="form.login.errors.required">Login é um campo necessário</div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-10" [ngClass]="{ 'has-error': submitted && form.password.errors }">
+          <label for="password">Senha</label>
+          <div class="col">
+            <input [class.input-error]="submitted && form.login.errors" type="password" formControlName="password"/>
+            <div *ngIf="submitted && form.password.errors" class="help-block">
+              <div *ngIf="form.password.errors.required">Senha é um campo necessário.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col mt-20 text-right">
+          <button type="submit">Registrar</button><br/>
+          <span (click)="isRegistering()">Login</span>
+          <p *ngIf="message" class="text-center help-block">{{message}}</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

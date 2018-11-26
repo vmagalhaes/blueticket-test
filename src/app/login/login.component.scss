@@ -1,0 +1,58 @@
+form {
+  text-align: center;
+  position: relative;
+  top: 70%;
+
+  label {
+    color: #585a6d;
+    font-size: 15px;
+    width: 200px;
+    text-align: left;
+  }
+
+  input {
+    border-radius: 2px;
+    border: 0px;
+    color: #585a6d;
+    padding: 3px;
+  }
+
+  .input-error {
+    border: 1px solid #F73235;
+  }
+
+  .help-block {
+    color: #F73235;
+    font-size: 14px;
+  }
+
+  button {
+    width: 200px;
+    height: 30px;
+    border-radius: 2px;
+    background-color: #2a92eb;
+    border: 1px solid #2485d8;
+    color: white;
+
+    &:hover {
+      box-shadow: 2px 2px 2px #22232d;
+    }
+  }
+
+  .registred-user {
+    color: #29a216;
+  }
+
+  span {
+    color: #585a6d;
+    font-size: 14px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .error { 
+
+  }
+}

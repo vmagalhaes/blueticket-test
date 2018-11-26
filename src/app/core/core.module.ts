@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { SettingsService } from './services';
+import { SettingsService, AuthGuardService, AuthService } from './services';
 
 @NgModule({
   declarations: [],
@@ -10,7 +10,9 @@ import { SettingsService } from './services';
     HttpClientModule
   ],
   providers: [
-    SettingsService
+    SettingsService,
+    AuthGuardService,
+    AuthService
   ]
 })
 export class CoreModule { }
